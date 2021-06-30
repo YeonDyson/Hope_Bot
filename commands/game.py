@@ -44,6 +44,18 @@ class games(commands.Cog):
 
     @commands.command(name= '인벤토리')
     async def Inventory(self, ctx):
+        user_id = ctx.author.id
+        with open('user.json', 'r', encoding='utf-8') as f:
+            user_data = json.load(f)
         embed = discord.Embed(color= 0x00ff9c)
-        embed.add_field(name="인벤토리", value=f'sans', inline=True)
+        embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+        embed.set_thumbnail(url=ctx.author.avatar_url)
+        embed.add_field(name="돈:moneybag:", value=f'``{user_data[f"{user_id}"]["money"]}``', inline=True)
+        embed.add_field(name="낚시:fish:", value="------------------------", inline=False)
+        embed.add_field(name="연어", value=f'``{user_data[f"{user_id}"]["fish"]["salmon"]}``', inline=True)
+        embed.add_field(name="고등어", value=f'``{user_data[f"{user_id}"]["fish"]["Mackerel"]}``', inline=True)
+        embed.add_field(name="참치", value=f'``{user_data[f"{user_id}"]["fish"]["tuna"]}``', inline=True)
+        embed.add_field(name="대구", value=f'``{user_data[f"{user_id}"]["fish"]["cod"]}``', inline=True)
+        embed.add_field(name="희동가리", value=f'``{user_data[f"{user_id}"]["fish"]["Clownfish"]}``', inline=True)
+        embed.add_field(name="참치", value=f'``{user_data[f"{user_id}"]["fish"]["goldfish"]}``', inline=True)
         await ctx.channel.send(embed=embed)
