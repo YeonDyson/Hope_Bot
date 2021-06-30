@@ -1,0 +1,41 @@
+{
+	"a": {
+		"name": "a"
+	},
+	"401282433426653186": {
+		"name": "nancom20",
+		"money": 100,
+		"fish": {
+			"salmon": 1,
+			"Mackerel": 0,
+			"tuna": 2,
+			"cod": 1,
+			"Clownfish": 0,
+			"goldfish": 0
+		}
+	},
+	"714728984021303316": {
+		"name": "\ub808\uc54c\ub8e8\ub2e4\ub0e5",
+		"money": 100,
+		"fish": {
+			"salmon": 3,
+			"Mackerel": 1,
+			"tuna": 0,
+			"cod": 0,
+			"Clownfish": 0,
+			"goldfish": 0
+		}
+	},
+	"546847690752000014": {
+		"name": "Lova0712",
+		"money": 100,
+		"fish": {
+			"salmon": 0,
+			"Mackerel": 0,
+			"tuna": 0,
+			"cod": 0,
+			"Clownfish": 0,
+			"goldfish": 0
+		}
+	}
+}
