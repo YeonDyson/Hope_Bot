@@ -52,6 +52,7 @@ class games(commands.Cog):
                 user_Information["name"] = user_name
                 user_Information["money"] = 100
                 user_Information["fish"] = {'salmon': 0, 'Mackerel': 0, 'tuna': 0, 'cod': 0, 'Clownfish': 0, 'goldfish': 0}
+                user_Information["Inventory"] = {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0}
                 Information[user_id] = user_Information
                 user_data.update(Information)
 
