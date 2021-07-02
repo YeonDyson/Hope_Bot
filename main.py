@@ -1,3 +1,4 @@
+import json
 import discord
 from discord.ext import commands, tasks
 from commands import help, game, account, HopeWiki, cmd
@@ -12,7 +13,7 @@ async def on_ready():
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         seconds = round(error.retry_after)
-        await ctx.channel.send(f"{seconds}초 후 가능해요 아무튼")
+        await ctx.channel.send(f"``{seconds}``초 후 가능해요 아무튼")
     elif isinstance(error, commands.CommandNotFound):
         return
     else:
