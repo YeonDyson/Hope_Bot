@@ -6,7 +6,72 @@
     },
     "1":{
         "name": "샌즈",
-        "type": "totem",
+        "type":{
+            "type": "totem"
+        },
         "Explanation": "샌즈들만 받을수 있는 템"
+    },
+    "2":{
+        "name": "낚시대",
+        "type":{
+            "type": "fishing"
+        },
+        "Explanation": "낚시대임"
+    },
+    "3":{
+        "name": "나무검",
+        "type":{
+            "type": "weapon"
+        },
+        "Explanation": "기본적인검"
+    },
+    "4":{
+        "name": "방패",
+        "type":{
+            "type": "Armor"
+        },
+        "Explanation": "왜있는거지?"
+    },
+    "5":{
+        "name": "활",
+        "type":{
+            "type": "weapon"
+        },
+        "Explanation": "근거리용 활"
+    },
+    "6":{
+        "name": "익힌생선",
+        "type":{
+            "type": "food"
+        },
+        "Explanation": "피쉬앤칩스"
+    },
+    "7":{
+        "name": "나무막대",
+        "type":{
+            "type": "etc"
+        },
+        "Explanation": "최고의 무기"
+    },
+    "8":{
+        "name": "실",
+        "type":{
+            "type": "etc"
+        },
+        "Explanation": "거미줄"
+    },
+    "9":{
+        "name": "돌",
+        "type":{
+            "type": "etc"
+        },
+        "Explanation": "최초의무기"
+    },
+    "10":{
+        "name": "철",
+        "type":{
+            "type": "etc"
+        },
+        "Explanation": "철좀 들어"
     }
 }

@@ -2,57 +2,19 @@
 	"a": {
 		"name": "a"
 	},
-	"714728984021303316": {
-		"name": "\ub808\uc54c\ub8e8\ub2e4\ub0e5",
-		"money": 0,
-		"fish": {
-			"salmon": 6,
-			"Mackerel": 7,
-			"tuna": 9,
-			"cod": 10,
-			"Clownfish": 0,
-			"goldfish": 1
-		},
-		"Inventory": {
-			"0": 0,
-			"1": 0,
-			"2": 0,
-			"3": 0,
-			"4": 0,
-			"5": 0,
-			"6": 0,
-			"7": 0,
-			"8": 0,
-			"9": 0
-		}
-	},
-	"837511677108682772": {
-		"name": "\uc720\ud2ad\ud558\ub294\uc0ac\ub78c",
-		"money": 100,
-		"fish": {
-			"salmon": 2,
-			"Mackerel": 5,
-			"tuna": 2,
-			"cod": 3,
-			"Clownfish": 0,
-			"goldfish": 0
-		},
-		"Inventory": {
-			"0": 0,
-			"1": 0,
-			"2": 0,
-			"3": 0,
-			"4": 0,
-			"5": 0,
-			"6": 0,
-			"7": 0,
-			"8": 0,
-			"9": 0
-		}
-	},
 	"401282433426653186": {
 		"name": "nancom20",
 		"money": 100,
+		"levels": 1,
+		"exp": 0,
+		"power": 1,
+		"def": 1,
+		"hp": 100,
+		"item": {
+			"weapon": 3,
+			"armor": null,
+			"totem": null
+		},
 		"fish": {
 			"salmon": 0,
 			"Mackerel": 0,
@@ -62,10 +24,10 @@
 			"goldfish": 0
 		},
 		"Inventory": {
-			"0": 1,
-			"1": 1,
-			"2": 1,
-			"3": 1,
+			"0": 0,
+			"1": 0,
+			"2": 0,
+			"3": 0,
 			"4": 0,
 			"5": 0,
 			"6": 0,
@@ -74,12 +36,22 @@
 			"9": 0
 		}
 	},
-	"732446393033031730": {
-		"name": "RedCream",
+	"714728984021303316": {
+		"name": "\ub808\uc54c\ub8e8\ub2e4\ub0e5",
 		"money": 100,
+		"levels": 1,
+		"exp": 0,
+		"power": 1,
+		"def": 1,
+		"hp": 100,
+		"item": {
+			"weapon": 3,
+			"armor": null,
+			"totem": null
+		},
 		"fish": {
 			"salmon": 0,
-			"Mackerel": 0,
+			"Mackerel": 1,
 			"tuna": 0,
 			"cod": 0,
 			"Clownfish": 0,

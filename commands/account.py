@@ -51,6 +51,12 @@ class games(commands.Cog):
                     user_Information = OrderedDict()
                     user_Information["name"] = user_name
                     user_Information["money"] = 100
+                    user_Information["levels"] = 1
+                    user_Information["exp"] = 0
+                    user_Information["power"] = 1
+                    user_Information["def"] = 1
+                    user_Information["hp"] = 100
+                    user_Information["item"] = {'weapon': 3, 'armor': None, 'totem': None}
                     user_Information["fish"] = {'salmon': 0, 'Mackerel': 0, 'tuna': 0, 'cod': 0, 'Clownfish': 0, 'goldfish': 0}
                     user_Information["Inventory"] = {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0}
                     Information[user_id] = user_Information
