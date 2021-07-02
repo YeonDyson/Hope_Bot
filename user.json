@@ -50,10 +50,10 @@
 			"totem": 1
 		},
 		"fish": {
-			"salmon": 1,
+			"salmon": 2,
 			"Mackerel": 2,
 			"tuna": 0,
-			"cod": 1,
+			"cod": 2,
 			"Clownfish": 0,
 			"goldfish": 0
 		},
