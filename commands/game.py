@@ -55,11 +55,32 @@ class games(commands.Cog):
             with open('item\item.json', 'r', encoding='utf-8') as f:
                 item_data = json.load(f)
 
+            user_Inventory0 = user_data[f"{user_id}"]["Inventory"]["0"]
+            user_Inventory1 = user_data[f"{user_id}"]["Inventory"]["1"]
+            user_Inventory2 = user_data[f"{user_id}"]["Inventory"]["2"]
+            user_Inventory3 = user_data[f"{user_id}"]["Inventory"]["3"]
+            user_Inventory4 = user_data[f"{user_id}"]["Inventory"]["4"]
+            user_Inventory5 = user_data[f"{user_id}"]["Inventory"]["5"]
+            user_Inventory6 = user_data[f"{user_id}"]["Inventory"]["6"]
+            user_Inventory7 = user_data[f"{user_id}"]["Inventory"]["7"]
+            user_Inventory8 = user_data[f"{user_id}"]["Inventory"]["8"]
+            user_Inventory9 = user_data[f"{user_id}"]["Inventory"]["9"]
+
             embed = discord.Embed(color= 0x00ff9c)
             embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
             embed.set_thumbnail(url=ctx.author.avatar_url)
             embed.add_field(name="돈:moneybag:", value=f'``{user_data[f"{user_id}"]["money"]}``', inline=True)
             embed.add_field(name="인벤토리:pouch:", value="------------------------", inline=False)
+            embed.add_field(name="0", value=f'``{item_data[f"{user_Inventory0}"]["name"]}``', inline=True)
+            embed.add_field(name="1", value=f'``{item_data[f"{user_Inventory1}"]["name"]}``', inline=True)
+            embed.add_field(name="2", value=f'``{item_data[f"{user_Inventory2}"]["name"]}``', inline=True)
+            embed.add_field(name="3", value=f'``{item_data[f"{user_Inventory3}"]["name"]}``', inline=True)
+            embed.add_field(name="4", value=f'``{item_data[f"{user_Inventory4}"]["name"]}``', inline=True)
+            embed.add_field(name="5", value=f'``{item_data[f"{user_Inventory5}"]["name"]}``', inline=True)
+            embed.add_field(name="6", value=f'``{item_data[f"{user_Inventory6}"]["name"]}``', inline=True)
+            embed.add_field(name="7", value=f'``{item_data[f"{user_Inventory7}"]["name"]}``', inline=True)
+            embed.add_field(name="8", value=f'``{item_data[f"{user_Inventory8}"]["name"]}``', inline=True)
+            embed.add_field(name="9", value=f'``{item_data[f"{user_Inventory9}"]["name"]}``', inline=True)
 
             embed.add_field(name="낚시:fish:", value="------------------------", inline=False)
             embed.add_field(name="연어", value=f'``{user_data[f"{user_id}"]["fish"]["salmon"]}``', inline=True)
@@ -67,7 +88,8 @@ class games(commands.Cog):
             embed.add_field(name="참치", value=f'``{user_data[f"{user_id}"]["fish"]["tuna"]}``', inline=True)
             embed.add_field(name="대구", value=f'``{user_data[f"{user_id}"]["fish"]["cod"]}``', inline=True)
             embed.add_field(name="희동가리", value=f'``{user_data[f"{user_id}"]["fish"]["Clownfish"]}``', inline=True)
-            embed.add_field(name="참치", value=f'``{user_data[f"{user_id}"]["fish"]["goldfish"]}``', inline=True)
+            embed.add_field(name="금붕어", value=f'``{user_data[f"{user_id}"]["fish"]["goldfish"]}``', inline=True)
+            await ctx.channel.send(embed=embed)
         else:
             embed = discord.Embed(color= 0xec4747)
             embed.add_field(name="이런", value="가입이 안돼있네요 희망봇 가입을 쳐보세요!", inline=True)
