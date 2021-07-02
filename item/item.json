@@ -1,3 +1,11 @@
 {
-    
+    "0":{
+        "name": "없음",
+        "type": "null"
+    },
+    "1":{
+        "name": "샌즈",
+        "type": "totem",
+        "Explanation": "샌즈들만 받을수 있는 템"
+    }
 }
