@@ -4,7 +4,7 @@
 	},
 	"401282433426653186": {
 		"name": "nancom20",
-		"money": 100,
+		"money": 0,
 		"levels": 1,
 		"exp": 0,
 		"power": 1,
@@ -12,8 +12,8 @@
 		"hp": 100,
 		"item": {
 			"weapon": 3,
-			"armor": null,
-			"totem": null
+			"armor": 1,
+			"totem": 1
 		},
 		"fish": {
 			"salmon": 0,
@@ -46,14 +46,14 @@
 		"hp": 100,
 		"item": {
 			"weapon": 3,
-			"armor": null,
-			"totem": null
+			"armor": 1,
+			"totem": 1
 		},
 		"fish": {
-			"salmon": 0,
-			"Mackerel": 1,
+			"salmon": 1,
+			"Mackerel": 2,
 			"tuna": 0,
-			"cod": 0,
+			"cod": 1,
 			"Clownfish": 0,
 			"goldfish": 0
 		},
