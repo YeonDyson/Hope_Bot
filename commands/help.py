@@ -21,6 +21,3 @@ class Core(commands.Cog):
         embed.set_footer(icon_url=ctx.author.avatar_url ,text=f"{user_name}의해 실행됨")
 
         await ctx.channel.send(embed=embed)
-        
-
-        

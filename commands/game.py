@@ -15,24 +15,13 @@ class games(commands.Cog):
             user_data = json.load(f)
 
         if f'{user_id}' in user_data:
-            fish = ['연어', '고등어', '참치', '대구', '흰동가리', '금붕어']
+            fish = ['salmon', 'Mackerel', 'tuna', 'cod', 'Clownfish', 'goldfish']
             random_fishing = random.choices(fish, weights=[30, 30, 25, 30, 1, 25])[0]
             embed = discord.Embed(color= 0x00ff9c)
             embed.add_field(name="호우우", value=f'{random_fishing}', inline=True)
             await ctx.channel.send(embed=embed)
 
-            if random_fishing == "연어":
-                user_data[f"{user_id}"]["fish"]["salmon"] += 1
-            elif random_fishing == "고등어":
-                user_data[f"{user_id}"]["fish"]["Mackerel"] += 1
-            elif random_fishing == "참치":
-                user_data[f"{user_id}"]["fish"]["tuna"] += 1
-            elif random_fishing == "대구":
-                user_data[f"{user_id}"]["fish"]["cod"] += 1
-            elif random_fishing == "희동가리":
-                user_data[f"{user_id}"]["fish"]["Clownfish"] += 1
-            elif random_fishing == "금붕어":
-                user_data[f"{user_id}"]["fish"]["goldfish"] += 1
+            user_data[f"{user_id}"]["fish"][f"{random_fishing}"] += 1
 
             with open('user.json', 'w', encoding='utf-8') as f2:
                 json.dump(user_data , f2, indent="\t")
@@ -70,22 +59,22 @@ class games(commands.Cog):
             user_Inventory9 = user_data[f"{user_id}"]["Inventory"]["9"]
 
             embed = discord.Embed(color= 0x00ff9c)
-            embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+            embed.set_author(name="희망봇 인벤토리", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
             embed.set_thumbnail(url=ctx.author.avatar_url)
 
             embed.add_field(name="레벨", value=f'``{user_data[f"{user_id}"]["levels"]}``', inline=True)
             embed.add_field(name="경험치", value=f'``{user_data[f"{user_id}"]["exp"]}``', inline=True)
-            embed.add_field(name="힘", value=f'``{user_data[f"{user_id}"]["power"]}``', inline=True)
-            embed.add_field(name="방어", value=f'``{user_data[f"{user_id}"]["def"]}``', inline=True)
+            embed.add_field(name="공격력", value=f'``{user_data[f"{user_id}"]["power"]}``', inline=True)
+            embed.add_field(name="방어력", value=f'``{user_data[f"{user_id}"]["def"]}``', inline=True)
             embed.add_field(name="HP", value=f'``{user_data[f"{user_id}"]["hp"]}``', inline=True)
 
             embed.add_field(name="돈:moneybag:", value=f'``{user_data[f"{user_id}"]["money"]}``', inline=True)
 
             embed.add_field(name="무기", value=f'``{item_data[f"{user_weapon}"]["name"]}``', inline=True)
-            embed.add_field(name="아머", value=f'``{item_data[f"{user_armor}"]["name"]}``', inline=True)
+            embed.add_field(name="갑옷", value=f'``{item_data[f"{user_armor}"]["name"]}``', inline=True)
             embed.add_field(name="토템", value=f'``{item_data[f"{user_totem}"]["name"]}``', inline=True)
 
-            embed.add_field(name="인벤토리:pouch:", value="-----------------------------------------------", inline=False)
+            embed.add_field(name="인벤토리:pouch:", value="--------------------------------", inline=False)
             embed.add_field(name="0", value=f'``{item_data[f"{user_Inventory0}"]["name"]}``', inline=True)
             embed.add_field(name="1", value=f'``{item_data[f"{user_Inventory1}"]["name"]}``', inline=True)
             embed.add_field(name="2", value=f'``{item_data[f"{user_Inventory2}"]["name"]}``', inline=True)
@@ -97,7 +86,7 @@ class games(commands.Cog):
             embed.add_field(name="8", value=f'``{item_data[f"{user_Inventory8}"]["name"]}``', inline=True)
             embed.add_field(name="9", value=f'``{item_data[f"{user_Inventory9}"]["name"]}``', inline=True)
 
-            embed.add_field(name="낚시:fish:", value="-----------------------------------------------", inline=False)
+            embed.add_field(name="낚시:fish:", value="--------------------------------", inline=False)
             embed.add_field(name="연어", value=f'``{user_data[f"{user_id}"]["fish"]["salmon"]}``', inline=True)
             embed.add_field(name="고등어", value=f'``{user_data[f"{user_id}"]["fish"]["Mackerel"]}``', inline=True)
             embed.add_field(name="참치", value=f'``{user_data[f"{user_id}"]["fish"]["tuna"]}``', inline=True)
@@ -105,6 +94,58 @@ class games(commands.Cog):
             embed.add_field(name="희동가리", value=f'``{user_data[f"{user_id}"]["fish"]["Clownfish"]}``', inline=True)
             embed.add_field(name="금붕어", value=f'``{user_data[f"{user_id}"]["fish"]["goldfish"]}``', inline=True)
             await ctx.channel.send(embed=embed)
+        else:
+            embed = discord.Embed(color= 0xec4747)
+            embed.add_field(name="이런", value="가입이 안돼있네요 희망봇 가입을 쳐보세요!", inline=True)
+            await ctx.channel.send(embed=embed)
+
+    @commands.command(name='낚시상점', arg='(판매 또는 구매) (물고기) (물고기수)')
+    async def fishing_shop(self, ctx, fish, poor_fish:int):
+
+        with open('user.json', 'r', encoding='utf-8') as f:
+            user_data = json.load(f)
+
+        user_id = ctx.author.id
+
+        if f'{user_id}' in user_data:
+
+            if fish == "연어":
+                fish = "salmon"
+                Sale_Price = 150
+            elif fish == "고등어":
+                fish = "Mackerel"
+                Sale_Price = 100
+            elif fish == "참치":
+                fish = "tuna"
+                Sale_Price = 150
+            else:
+                embed = discord.Embed(color= 0x00ff9c)
+                embed.set_author(name="희망봇 낚시상점", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+                embed.add_field(name="흠", value="그런 물고기는 안사요 NAGA!", inline=True)
+                await ctx.channel.send(embed=embed)
+
+            if poor_fish > user_data[f"{user_id}"]["fish"][f"{fish}"]:
+                embed = discord.Embed(color= 0x00ff9c)
+                embed.set_author(name="희망봇 낚시상점", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+                embed.add_field(name="흠", value="물고기가 그만큼 업잖아요", inline=True)
+                await ctx.channel.send(embed=embed)
+
+            elif poor_fish <= 0:
+                embed = discord.Embed(color= 0x00ff9c)
+                embed.add_field(name="흠", value="물고기가 없는데요?", inline=True)
+                await ctx.channel.send(embed=embed)
+
+            else:
+                user_data[f"{user_id}"]["fish"][f"{fish}"] -= poor_fish
+                poor_fish *= Sale_Price
+                user_data[f"{user_id}"]["money"] += poor_fish
+                embed = discord.Embed(color= 0x00ff9c)
+                embed.add_field(name="굿", value=f'잔액요:`{user_data[f"{user_id}"]["money"]}`', inline=True)
+                await ctx.channel.send(embed=embed)
+
+            with open('user.json', 'w', encoding='utf-8') as f2:
+                json.dump(user_data , f2, indent="\t")
+
         else:
             embed = discord.Embed(color= 0xec4747)
             embed.add_field(name="이런", value="가입이 안돼있네요 희망봇 가입을 쳐보세요!", inline=True)

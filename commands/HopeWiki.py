@@ -2,7 +2,6 @@ import discord, json
 from discord.ext import commands, tasks
 from collections import OrderedDict
 
-#위키 json사용할거
 class Wiki(commands.Cog):
 
     def __init__(self, bot):
