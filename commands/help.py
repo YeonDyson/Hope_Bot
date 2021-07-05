@@ -13,7 +13,7 @@ class Core(commands.Cog):
         user_id = ctx.author.id
         user_name = ctx.author.name
 
-        embed = discord.Embed(title = "희망봇",color= 0x00ff9c)
+        embed = discord.Embed(title = "희망봇",color= 0xfbb907)
         embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
         embed.add_field(name="희망위키", value="다양한 정보를 보거나 추가할 수 있아요 \n ``위키만들기``:위키를 새로 만들어요 \n ``페이지추가``:위키에 페이지를 추가해요 \n ``위키삭제``:위키를 삭제해요 \n ``페이지삭제``:페이지를 삭제해요", inline=True)

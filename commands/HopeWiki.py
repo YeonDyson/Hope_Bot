@@ -42,7 +42,7 @@ class Wiki(commands.Cog):
         wiki_data.update(newwiki)
         with open('wikidata\wiki.json', 'w', encoding='utf-8') as outfile: json.dump(wiki_data, outfile, indent=4)
 
-        embed = discord.Embed(title =wiki_data[wikiname]["name"], description="``"+wiki_data[wikiname]["Explanation"]+"``", color= 0x00ff9c)
+        embed = discord.Embed(title =wiki_data[wikiname]["name"], description="``"+wiki_data[wikiname]["Explanation"]+"``", color= 0xfbb907)
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
         embed.set_author(name="희망위키", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
         embed.add_field(name="유튜브", value="``"+wiki_data[wikiname]["youtube"]+"``", inline=True)

@@ -8,8 +8,6 @@ class games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    
-
     @commands.command(name= '가입')
     async def account(self, ctx):
         # user_tag = ctx.author.discriminator
@@ -26,7 +24,7 @@ class games(commands.Cog):
             await ctx.channel.send(embed=embed)
 
         else:
-            embed = discord.Embed(color= 0x00ff9c)
+            embed = discord.Embed(color= 0xfbb907)
             embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
             embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
             embed.add_field(name="가입입", value="뭐 저장하는건 닉네임과 아이디 밖에없서요 ¯\_(ツ)_/¯", inline=True)
@@ -40,7 +38,7 @@ class games(commands.Cog):
             try:
                 reactin, _user = await self.bot.wait_for(event='reaction_add', timeout=15.0, check=check)
             except asyncio.TimeoutError:
-                embed = discord.Embed(color= 0x00ff9c)
+                embed = discord.Embed(color= 0xfbb907)
                 embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
                 embed.add_field(name="어음.........", value="흠ㅁ흐으음", inline=True)
@@ -58,19 +56,19 @@ class games(commands.Cog):
                     user_Information["hp"] = 100
                     user_Information["item"] = {'weapon': 3, 'armor': 1, 'totem': 1}
                     user_Information["fish"] = {'salmon': 0, 'Mackerel': 0, 'tuna': 0, 'cod': 0, 'Clownfish': 0, 'goldfish': 0}
-                    user_Information["Inventory"] = {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0}
+                    user_Information["Inventory"] = {'0': {'id': 0, 'amount': 1}, '1': {'id': 0, 'amount': 1}, '2': {'id': 0, 'amount': 1}, '3': {'id': 0, 'amount': 1}, '4': {'id': 0, 'amount': 1}, '5': {'id': 0, 'amount': 1}, '6': {'id': 0, 'amount': 1}, '7': {'id': 0, 'amount': 1}, '8': {'id': 0, 'amount': 1}, '9': {'id': 0, 'amount': 1}}
                     Information[user_id] = user_Information
                     user_data.update(Information)
 
                     with open('user.json', 'w', encoding='utf-8') as outfile: json.dump(user_data , outfile, indent=4)
         
-                    embed = discord.Embed(color= 0x00ff9c)
+                    embed = discord.Embed(color= 0xfbb907)
                     embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
                     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
                     embed.add_field(name="우와와아우", value="가입 완료!", inline=True)
                     await msg.edit(embed=embed)    
                 elif str(reactin) == '🟥':
-                    embed = discord.Embed(color= 0x00ff9c)
+                    embed = discord.Embed(color= 0xfbb907)
                     embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
                     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
                     embed.add_field(name="파이", value="ㅠ", inline=True)
@@ -85,7 +83,7 @@ class games(commands.Cog):
         with open('user.json', 'r', encoding='utf-8') as f: user_data = json.load(f)
 
         if f'{user_id}' in user_data:
-            embed = discord.Embed(color= 0x00ff9c)
+            embed = discord.Embed(color= 0xfbb907)
             embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
             embed.add_field(name="ㅓ......", value="진짜로 탈퇴하실건가요", inline=True)
             msg = await ctx.channel.send(embed=embed)
@@ -99,7 +97,7 @@ class games(commands.Cog):
                 reactin, _user = await self.bot.wait_for(event='reaction_add', timeout=15.0, check=check)
 
             except asyncio.TimeoutError:
-                embed = discord.Embed(color= 0x00ff9c)
+                embed = discord.Embed(color= 0xfbb907)
                 embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
                 embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
                 embed.add_field(name="어음.........", value="흠ㅁ흐으음", inline=True)
@@ -107,7 +105,7 @@ class games(commands.Cog):
 
             else:
                 if str(reactin) == '🟩':
-                    embed = discord.Embed(color= 0x00ff9c)
+                    embed = discord.Embed(color= 0xfbb907)
                     embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
                     embed.add_field(name="파이", value="성공적으로 탈퇴했서요 언젠간 다시 와요 ㅠ", inline=True)
                     await msg.edit(embed=embed)
@@ -115,7 +113,7 @@ class games(commands.Cog):
                     del user_data[f"{user_id}"]
                     with open('user.json', 'w', encoding='utf-8') as outfile: json.dump(user_data , outfile, indent=4)
                 elif str(reactin) == '🟥':
-                    embed = discord.Embed(color= 0x00ff9c)
+                    embed = discord.Embed(color= 0xfbb907)
                     embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
                     embed.add_field(name="ㅠ", value=":sob:", inline=True)
                     await msg.edit(embed=embed)

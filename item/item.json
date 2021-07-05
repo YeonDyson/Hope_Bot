@@ -1,8 +1,8 @@
 {
     "0":{
         "name": "없음",
-        "type": "null",
-        "Explanation": " "
+        "type": null,
+        "Explanation": null
     },
     "1":{
         "name": "샌즈",
@@ -42,7 +42,8 @@
     "6":{
         "name": "익힌생선",
         "type":{
-            "type": "food"
+            "type": "food",
+            "food": 35
         },
         "Explanation": "피쉬앤칩스"
     },
@@ -73,5 +74,12 @@
             "type": "etc"
         },
         "Explanation": "철좀 들어"
-    }
+    },
+    "11":{
+        "name": "떡밥",
+        "type":{
+            "type": "etc"
+        }
+    }, 
+    "Explanation": "물고기들이 환장할 맛"
 }
