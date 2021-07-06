@@ -21,21 +21,24 @@
     "3":{
         "name": "나무검",
         "type":{
-            "type": "weapon"
+            "type": "weapon",
+            "ATK": 2
         },
         "Explanation": "기본적인검"
     },
     "4":{
         "name": "방패",
         "type":{
-            "type": "Armor"
+            "type": "Armor",
+            "def": 2
         },
         "Explanation": "왜있는거지?"
     },
     "5":{
-        "name": "활",
+        "name": "나무활",
         "type":{
-            "type": "weapon"
+            "type": "weapon",
+            "ATK": 3
         },
         "Explanation": "근거리용 활"
     },

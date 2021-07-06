@@ -2,7 +2,7 @@ import json
 import discord
 from discord.ext import commands, tasks
 from commands import help, game, account, HopeWiki, cmd
-bot = commands.Bot(command_prefix='희망봇 ', help_command= None)
+bot = commands.Bot(command_prefix='희망봇 ')#, help_command= None)
 
 @bot.event
 async def on_ready():

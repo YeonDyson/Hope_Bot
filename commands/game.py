@@ -1,7 +1,8 @@
+import asyncio
 import discord, json, random
 from discord.ext import commands, tasks
 from collections import OrderedDict
-from commands import item
+from commands import item, game
 
 class games(commands.Cog):
 
@@ -45,6 +46,7 @@ class games(commands.Cog):
             user_weapon = user_data[f"{user_id}"]["item"]["weapon"]
             user_armor = user_data[f"{user_id}"]["item"]["armor"]
             user_totem = user_data[f"{user_id}"]["item"]["totem"]
+            user_secondary_weapon = user_data[f"{user_id}"]["item"]["secondary_weapon"]
             user_Inventory0 = user_data[f"{user_id}"]["Inventory"]["0"]['id']
             user_Inventory1 = user_data[f"{user_id}"]["Inventory"]["1"]['id']
             user_Inventory2 = user_data[f"{user_id}"]["Inventory"]["2"]['id']
@@ -55,14 +57,15 @@ class games(commands.Cog):
             user_Inventory7 = user_data[f"{user_id}"]["Inventory"]["7"]['id']
             user_Inventory8 = user_data[f"{user_id}"]["Inventory"]["8"]['id']
             user_Inventory9 = user_data[f"{user_id}"]["Inventory"]["9"]['id']
+            
 
             embed = discord.Embed(color= 0xfbb907)
-            embed.set_author(name="희망봇 인벤토리", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+            embed.set_author(name="희망봇 인벤토리 1/3", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
             embed.set_thumbnail(url=ctx.author.avatar_url)
 
             embed.add_field(name="레벨", value=f'``{user_data[f"{user_id}"]["levels"]}``', inline=True)
             embed.add_field(name="경험치", value=f'``{user_data[f"{user_id}"]["exp"]}``', inline=True)
-            embed.add_field(name="공격력", value=f'``{user_data[f"{user_id}"]["power"]}``', inline=True)
+            embed.add_field(name="공격력", value=f'``{user_data[f"{user_id}"]["atk"]}``', inline=True)
             embed.add_field(name="방어력", value=f'``{user_data[f"{user_id}"]["def"]}``', inline=True)
             embed.add_field(name="HP", value=f'``{user_data[f"{user_id}"]["hp"]}``', inline=True)
 
@@ -71,27 +74,85 @@ class games(commands.Cog):
             embed.add_field(name="무기", value=f'``{item_data[f"{user_weapon}"]["name"]}``', inline=True)
             embed.add_field(name="갑옷", value=f'``{item_data[f"{user_armor}"]["name"]}``', inline=True)
             embed.add_field(name="토템", value=f'``{item_data[f"{user_totem}"]["name"]}``', inline=True)
+            embed.add_field(name="보조무기", value=f'``{item_data[f"{user_secondary_weapon}"]["name"]}``', inline=True)
 
-            embed.add_field(name="인벤토리:pouch:", value="--------------------------------", inline=False)
-            embed.add_field(name="0", value=f'``{item_data[f"{user_Inventory0}"]["name"]}``', inline=True)
-            embed.add_field(name="1", value=f'``{item_data[f"{user_Inventory1}"]["name"]}``', inline=True)
-            embed.add_field(name="2", value=f'``{item_data[f"{user_Inventory2}"]["name"]}``', inline=True)
-            embed.add_field(name="3", value=f'``{item_data[f"{user_Inventory3}"]["name"]}``', inline=True)
-            embed.add_field(name="4", value=f'``{item_data[f"{user_Inventory4}"]["name"]}``', inline=True)
-            embed.add_field(name="5", value=f'``{item_data[f"{user_Inventory5}"]["name"]}``', inline=True)
-            embed.add_field(name="6", value=f'``{item_data[f"{user_Inventory6}"]["name"]}``', inline=True)
-            embed.add_field(name="7", value=f'``{item_data[f"{user_Inventory7}"]["name"]}``', inline=True)
-            embed.add_field(name="8", value=f'``{item_data[f"{user_Inventory8}"]["name"]}``', inline=True)
-            embed.add_field(name="9", value=f'``{item_data[f"{user_Inventory9}"]["name"]}``', inline=True)
+            Inventoryembed = discord.Embed(color= 0xfbb907)
+            Inventoryembed.set_author(name="희망봇 인벤토리 2/3", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+            embed.set_thumbnail(url=ctx.author.avatar_url)
+            Inventoryembed.add_field(name="인벤토리:pouch:", value="--------------------------------", inline=False)
+            Inventoryembed.add_field(name="0", value=f'``{item_data[f"{user_Inventory0}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="1", value=f'``{item_data[f"{user_Inventory1}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="2", value=f'``{item_data[f"{user_Inventory2}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="3", value=f'``{item_data[f"{user_Inventory3}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="4", value=f'``{item_data[f"{user_Inventory4}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="5", value=f'``{item_data[f"{user_Inventory5}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="6", value=f'``{item_data[f"{user_Inventory6}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="7", value=f'``{item_data[f"{user_Inventory7}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="8", value=f'``{item_data[f"{user_Inventory8}"]["name"]}``', inline=True)
+            Inventoryembed.add_field(name="9", value=f'``{item_data[f"{user_Inventory9}"]["name"]}``', inline=True)
 
-            embed.add_field(name="낚시:fish:", value="--------------------------------", inline=False)
-            embed.add_field(name="연어", value=f'``{user_data[f"{user_id}"]["fish"]["salmon"]}``', inline=True)
-            embed.add_field(name="고등어", value=f'``{user_data[f"{user_id}"]["fish"]["Mackerel"]}``', inline=True)
-            embed.add_field(name="참치", value=f'``{user_data[f"{user_id}"]["fish"]["tuna"]}``', inline=True)
-            embed.add_field(name="대구", value=f'``{user_data[f"{user_id}"]["fish"]["cod"]}``', inline=True)
-            embed.add_field(name="희동가리", value=f'``{user_data[f"{user_id}"]["fish"]["Clownfish"]}``', inline=True)
-            embed.add_field(name="금붕어", value=f'``{user_data[f"{user_id}"]["fish"]["goldfish"]}``', inline=True)
-            await ctx.channel.send(embed=embed)
+            fishembed = discord.Embed(color= 0xfbb907)
+            fishembed.set_author(name="희망봇 인벤토리 3/3", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+            embed.set_thumbnail(url=ctx.author.avatar_url)
+            fishembed.add_field(name="낚시:fish:", value="--------------------------------", inline=False)
+            fishembed.add_field(name="연어", value=f'``{user_data[f"{user_id}"]["fish"]["salmon"]}``', inline=True)
+            fishembed.add_field(name="고등어", value=f'``{user_data[f"{user_id}"]["fish"]["Mackerel"]}``', inline=True)
+            fishembed.add_field(name="참치", value=f'``{user_data[f"{user_id}"]["fish"]["tuna"]}``', inline=True)
+            fishembed.add_field(name="대구", value=f'``{user_data[f"{user_id}"]["fish"]["cod"]}``', inline=True)
+            fishembed.add_field(name="희동가리", value=f'``{user_data[f"{user_id}"]["fish"]["Clownfish"]}``', inline=True)
+            fishembed.add_field(name="금붕어", value=f'``{user_data[f"{user_id}"]["fish"]["goldfish"]}``', inline=True)
+
+            msg = await ctx.channel.send(embed=embed)
+
+            await msg.add_reaction('◀️')
+            await msg.add_reaction('▶️')
+
+            def check(reactin, user):
+                return str(reactin) in '◀️', '▶️'  and user == ctx.author and reactin.message.id == msg.id
+
+            page = 0
+
+            while True:
+
+                try:
+                    reactin, _user = await self.bot.wait_for(event='reaction_add', timeout=15.0, check=check)
+
+                except asyncio.TimeoutError:
+                    embed = discord.Embed(color= 0xfbb907)
+                    embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
+                    embed.add_field(name="어음.........", value="흠ㅁ흐으음", inline=True)
+                    await msg.edit(embed=embed)
+                    
+                    break
+
+                else:
+                    if str(reactin) == '◀️':
+                        if page == 1:
+                            page = 3
+                        else:
+                            page -= 1
+
+                        if page == 1:
+                            await msg.edit(embed=embed)
+                        elif page == 2:
+                            await msg.edit(embed=Inventoryembed)
+                        elif page == 3:
+                            await msg.edit(embed=fishembed)
+
+                    elif str(reactin) == '▶️':
+                        if page == 3:
+                            page = 1
+                        else:
+                            page += 1
+
+                        if page == 1:
+                            await msg.edit(embed=embed)
+                        elif page == 2:
+                            await msg.edit(embed=Inventoryembed)
+                        elif page == 3:
+                            await msg.edit(embed=fishembed)
+                        
         else:
             embed = discord.Embed(color= 0xec4747)
             embed.add_field(name="이런", value="가입이 안돼있네요 희망봇 가입을 쳐보세요!", inline=True)
@@ -158,7 +219,3 @@ class games(commands.Cog):
             embed = discord.Embed(color= 0xec4747)
             embed.add_field(name="이런", value="가입이 안돼있네요 희망봇 가입을 쳐보세요!", inline=True)
             await ctx.channel.send(embed=embed)
-
-    @commands.command(name='샌즈')
-    async def fishing_shop(self, ctx, id):
-        await item.save_item(id, ctx)

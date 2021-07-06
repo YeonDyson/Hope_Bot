@@ -51,10 +51,11 @@ class games(commands.Cog):
                     user_Information["money"] = 100
                     user_Information["levels"] = 1
                     user_Information["exp"] = 0
-                    user_Information["power"] = 1
+                    user_Information["atk"] = 1
                     user_Information["def"] = 1
                     user_Information["hp"] = 100
-                    user_Information["item"] = {'weapon': 3, 'armor': 1, 'totem': 1}
+                    user_Information["hunger"] = 100
+                    user_Information["item"] = {'weapon': 3, 'armor': 4, 'totem': 1, 'secondary_weapon': 0}
                     user_Information["fish"] = {'salmon': 0, 'Mackerel': 0, 'tuna': 0, 'cod': 0, 'Clownfish': 0, 'goldfish': 0}
                     user_Information["Inventory"] = {'0': {'id': 0, 'amount': 1}, '1': {'id': 0, 'amount': 1}, '2': {'id': 0, 'amount': 1}, '3': {'id': 0, 'amount': 1}, '4': {'id': 0, 'amount': 1}, '5': {'id': 0, 'amount': 1}, '6': {'id': 0, 'amount': 1}, '7': {'id': 0, 'amount': 1}, '8': {'id': 0, 'amount': 1}, '9': {'id': 0, 'amount': 1}}
                     Information[user_id] = user_Information
