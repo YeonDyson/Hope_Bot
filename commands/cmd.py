@@ -1,6 +1,5 @@
-import discord
+import discord, random, main
 from discord.ext import commands, tasks
-import main
 from commands import help, game, account, HopeWiki, item
 
 class Cmd(commands.Cog):
@@ -22,4 +21,12 @@ class Cmd(commands.Cog):
     async def itemdeletecmd(self, ctx, line, amount):
         if ctx.author.id == 401282433426653186:
             await item.delete_item(line, amount, ctx)
+
+    @commands.command(name= '샌즈')
+    async def sans(self, ctx):
+        if ctx.author.id == 401282433426653186:
+            fishingg = ['⬜', '⬜', '⬜', '⬜', '⬜']
+            strr = '🟦'
+            fishingg[random.randrange(0,5)] = strr
+            await ctx.channel.send(fishingg)
     

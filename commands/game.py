@@ -1,4 +1,4 @@
-import asyncio
+import asyncio  #할일 떡밥, 상점, 던전
 import discord, json, random
 from discord.ext import commands, tasks
 from collections import OrderedDict
@@ -17,19 +17,85 @@ class games(commands.Cog):
             user_data = json.load(f)
 
         if f'{user_id}' in user_data:
-            fish = ['salmon', 'Mackerel', 'tuna', 'cod', 'Clownfish', 'goldfish']
-            random_fishing = random.choices(fish, weights=[30, 30, 25, 30, 1, 25])[0]
+
+            for i in range(10):
+                if user_data[f'{user_id}']['Inventory'][f'{i}']['id'] == 11:
+                    paste_bait_lain = i
+                    break
+                else:
+                    embed = discord.Embed(color= 0xfbb907)
+                    embed.set_author(name="희망봇 낚시", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+                    embed.add_field(name="저런", value="떡밥이 없내요", inline=True)
+                    await ctx.channel.send(embed=embed)
+                    return
+
+            fishingg = ['⬜', '⬜', '⬜', '⬜', '⬜', '⬛']
+            nemo = '🟦'
+            fishingg[random.randrange(0,5)] = nemo
+            user_fishing = ['⬜', '⬜', '⬜', '⬜', '⬜', '⬛']
+
             embed = discord.Embed(color= 0xfbb907)
-            embed.add_field(name="호우우", value=f'{random_fishing}', inline=True)
-            await ctx.channel.send(embed=embed)
+            embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+            embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
+            embed.add_field(name="낙시중", value=f"{fishingg}", inline=False)
+            embed.add_field(name="낙시중", value=f"{user_fishing}", inline=False)
+            msg = await ctx.channel.send(embed=embed)
 
-            user_data[f"{user_id}"]["fish"][f"{random_fishing}"] += 1
+            await msg.add_reaction('🎣')
 
-            with open('user.json', 'w', encoding='utf-8') as f2:
-                json.dump(user_data , f2, indent="\t")
+            for i in range(7):
+                def check(reactin, user):
+                    return str(reactin) in '🎣' and user == ctx.author and reactin.message.id == msg.id
+
+                try:
+                    reactin, _user = await self.bot.wait_for(event='reaction_add', timeout=2.0, check=check)
+
+                except asyncio.TimeoutError:
+                    user_fishing = ['⬜', '⬜', '⬜', '⬜', '⬜', '⬛']
+                    user_fishing[i] = nemo
+
+                    embed = discord.Embed(color= 0xfbb907)
+                    embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
+                    embed.add_field(name="낙시중", value=f"{fishingg}", inline=False)
+                    embed.add_field(name="낙시중", value=f"{user_fishing}", inline=False)
+                    await msg.edit(embed=embed)
+
+                else:
+                    if str(reactin) == '🎣':
+                        if fishingg == user_fishing:
+                            if user_data[f'{user_id}']['Inventory'][f'{paste_bait_lain}']['id'] == 11:
+                                fish = ['salmon', 'Mackerel', 'tuna', 'cod', 'Clownfish', 'goldfish']
+                                random_fishing = random.choices(fish, weights=[30, 30, 25, 30, 1, 25])[0]
+                    
+                                user_data[f"{user_id}"]["fish"][f"{random_fishing}"] += 1
+
+                                with open('user.json', 'w', encoding='utf-8') as f2:
+                                    json.dump(user_data , f2, indent="\t")
+
+                                await item.delete_item(paste_bait_lain, 1, ctx)
+                                paste_bait = user_data[f'{user_id}']['Inventory'][f'{paste_bait_lain}']['amount'] - 1
+                                embed = discord.Embed(color= 0xfbb907)
+                                embed.set_author(name="희망봇 낚시", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+                                embed.add_field(name="낚시 성공!", value=f'{random_fishing}', inline=True)
+                                embed.set_footer(text=f"남은 떡밥 {paste_bait}")
+                                await msg.edit(embed=embed) 
+                                return
+                    else:
+                        embed = discord.Embed(color= 0xfbb907)
+                        embed.set_author(name="희망봇 낚시", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+                        embed.add_field(name="저런", value="물고기가 도망같네요", inline=True)
+                        await msg.edit(embed=embed)
+                        return    
+
+            embed = discord.Embed(color= 0xfbb907)
+            embed.set_author(name="희망봇 낚시", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
+            embed.add_field(name="저런", value="물고기가 도망같네요", inline=True)
+            await msg.edit(embed=embed)
 
         else:
             embed = discord.Embed(color= 0xec4747)
+            embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
             embed.add_field(name="이런", value="가입이 안돼있네요 희망봇 가입을 쳐보세요!", inline=True)
             await ctx.channel.send(embed=embed)
 
@@ -78,7 +144,7 @@ class games(commands.Cog):
 
             Inventoryembed = discord.Embed(color= 0xfbb907)
             Inventoryembed.set_author(name="희망봇 인벤토리 2/3", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
-            embed.set_thumbnail(url=ctx.author.avatar_url)
+            Inventoryembed.set_thumbnail(url=ctx.author.avatar_url)
             Inventoryembed.add_field(name="인벤토리:pouch:", value="--------------------------------", inline=False)
             Inventoryembed.add_field(name="0", value=f'``{item_data[f"{user_Inventory0}"]["name"]}``', inline=True)
             Inventoryembed.add_field(name="1", value=f'``{item_data[f"{user_Inventory1}"]["name"]}``', inline=True)
@@ -93,7 +159,7 @@ class games(commands.Cog):
 
             fishembed = discord.Embed(color= 0xfbb907)
             fishembed.set_author(name="희망봇 인벤토리 3/3", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
-            embed.set_thumbnail(url=ctx.author.avatar_url)
+            fishembed.set_thumbnail(url=ctx.author.avatar_url)
             fishembed.add_field(name="낚시:fish:", value="--------------------------------", inline=False)
             fishembed.add_field(name="연어", value=f'``{user_data[f"{user_id}"]["fish"]["salmon"]}``', inline=True)
             fishembed.add_field(name="고등어", value=f'``{user_data[f"{user_id}"]["fish"]["Mackerel"]}``', inline=True)
@@ -118,12 +184,6 @@ class games(commands.Cog):
                     reactin, _user = await self.bot.wait_for(event='reaction_add', timeout=15.0, check=check)
 
                 except asyncio.TimeoutError:
-                    embed = discord.Embed(color= 0xfbb907)
-                    embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png",)
-                    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
-                    embed.add_field(name="어음.........", value="흠ㅁ흐으음", inline=True)
-                    await msg.edit(embed=embed)
-                    
                     break
 
                 else:
@@ -140,6 +200,8 @@ class games(commands.Cog):
                         elif page == 3:
                             await msg.edit(embed=fishembed)
 
+                        await msg.remove_reaction('◀️', _user)
+
                     elif str(reactin) == '▶️':
                         if page == 3:
                             page = 1
@@ -152,6 +214,8 @@ class games(commands.Cog):
                             await msg.edit(embed=Inventoryembed)
                         elif page == 3:
                             await msg.edit(embed=fishembed)
+
+                        await msg.remove_reaction('▶️', _user)
                         
         else:
             embed = discord.Embed(color= 0xec4747)
