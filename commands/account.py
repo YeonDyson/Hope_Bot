@@ -27,7 +27,7 @@ class games(commands.Cog):
             embed = discord.Embed(color= 0xfbb907)
             embed.set_author(name="희망봇", icon_url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
             embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/773727937069056000/857254590218371082/526_B39FCE5.png")
-            embed.add_field(name="가입입", value="뭐 저장하는건 닉네임과 아이디 밖에 없어요 ¯\_(ツ)_/¯", inline=True)
+            embed.add_field(name="가입", value="뭐 저장하는건 닉네임과 아이디 밖에 없어요 ¯\_(ツ)_/¯", inline=True)
             embed.add_field(name="ㅁㅁㅁ", value="동의하지 않으면 이용할때 일부제한이 있을 수도 있어요", inline=False)
             msg = await ctx.channel.send(embed=embed)
             await msg.add_reaction('🟩')
