@@ -1,4 +1,4 @@
-import asyncio  #할일 떡밥, 상점, 던전
+import asyncio
 import discord, json, random
 from discord.ext import commands, tasks
 from collections import OrderedDict
