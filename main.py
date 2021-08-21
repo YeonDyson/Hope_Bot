@@ -28,4 +28,4 @@ if __name__ == "__main__":
     bot.add_cog(game.games(bot))
     bot.add_cog(account.games(bot))
     bot.add_cog(HopeWiki.Wiki(bot))
-    bot.run("ODU3MDY4MDY2OTc0NTk3MTQx.YNKM1g.3VeW3ZgxEfbqzuFSGUJFH8KqpT8")
+    bot.run("토큰")
